@@ -14,8 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Стерлитамак',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          //primarySwatch:MaterialColor(1, Colors.white70) ,
+          textTheme: TextTheme(
+        titleLarge: TextStyle(color: Colors.black),
+      )),
       home: MyMap(), //WebViewPage(),
     );
   }
