@@ -86,6 +86,7 @@ class BottomSheetContent extends StatelessWidget {
             height: 10,
           ),
           Container(
+            height: 50,
             margin: EdgeInsets.only(top: 0, left: 10, right: 10, bottom: 10),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(

@@ -2,7 +2,7 @@
     package="com.example.str_tour_app">
    <application
         android:label="str_tour_app"
-        android:name="${applicationName}"
+        android:name="Стерлитамак"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
         <activity

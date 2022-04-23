@@ -12,8 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // color: Colors.transparent,
+      //shadowColor: Colors.transparent,
       title: 'Стерлитамак',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black),
           titleTextStyle:

@@ -136,16 +136,19 @@ class _MyMapWebState extends State<MyMapWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.transparent,
       appBar: AppBar(
+        elevation: 0,
+        //  backgroundColor: Colors.transparent,
         title: Row(
           children: [
             // SizedBox(width: 10),
             Image(
               image: AssetImage('assets/icons/str_logo.png'),
-              width: 50,
-              height: 50,
+              width: 25,
+              height: 25,
             ),
-            //SizedBox(width: 50),
+            SizedBox(width: 20),
             Text(
               'Достопримечательности',
               style: TextStyle(fontSize: 16),
