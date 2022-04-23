@@ -5,6 +5,7 @@ import 'package:latlng/latlng.dart';
 import 'package:map/map.dart';
 import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:str_tour_app/features/str_tour/presentation/widgets/bottom_sheet_content.dart';
 //import 'dart:js' as js;
 
 class MyMapWeb extends StatefulWidget {
@@ -67,12 +68,30 @@ class _MyMapWebState extends State<MyMapWeb> {
     }
   }
 
+  void _showModalBottomSheet(BuildContext context, String title,
+      final String urlAdress, String adress, String phone, String url) {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (context) {
+        return BottomSheetContent(
+            title: title,
+            urlAddress: urlAdress,
+            address: adress,
+            phone: phone,
+            url: url);
+      },
+    );
+  }
+
   Widget _buildMarkerWidget(
       {required Offset pos,
       required Color color,
       required String icon,
       required String url,
-      required String title}) {
+      required String title,
+      required String urlAddress,
+      required String address,
+      required String phone}) {
     return Positioned(
       left: pos.dx - 16,
       top: pos.dy - 16,
@@ -87,8 +106,10 @@ class _MyMapWebState extends State<MyMapWeb> {
               onTap: () {
                 //   js.context.callMethod('open', ['$url']);
                 // setState(() {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WebViewPage()));
+                _showModalBottomSheet(
+                    context, title, urlAddress, address, phone, url);
+                // Navigator.push(context,
+                //   MaterialPageRoute(builder: (context) => WebViewPage()));
                 // });
               },
               child: Image(image: AssetImage('$icon'), width: 50, height: 50),
@@ -152,102 +173,127 @@ class _MyMapWebState extends State<MyMapWeb> {
               markers.map(transformer.fromLatLngToXYCoords).toList();
 
           final parkGagarina = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.647531, 55.946773)),
-              color: Color.fromARGB(255, 2, 62, 4),
-              icon: 'assets/icons/park.png',
-              url: 'http://sonofmqe.beget.tech/park_gagarina',
-              title: 'Парк культуры и отдыха имени Ю.А. Гагарина');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.647531, 55.946773)),
+            color: Color.fromARGB(255, 2, 62, 4),
+            icon: 'assets/icons/park.png',
+            url: 'http://sonofmqe.beget.tech/park_gagarina',
+            title: 'Парк культуры и отдыха имени Ю.А. Гагарина',
+            urlAddress: 'https://park-str.ru',
+            address: 'ул. Фурманова, 15',
+            phone: '+7 (937) 308-88-03',
+          );
 
           final parkZhykov = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.628821, 55.921758)),
-              color: Color.fromARGB(255, 2, 62, 4),
-              icon: 'assets/icons/park.png',
-              url: '',
-              title: 'Парк имени Жукова Г.К.');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.628821, 55.921758)),
+            color: Color.fromARGB(255, 2, 62, 4),
+            icon: 'assets/icons/park.png',
+            url: '',
+            title: 'Парк имени Жукова Г.К.',
+            urlAddress: '',
+            address: '',
+            phone: '',
+          );
 
           final parkPobedi = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.630899, 55.926776)),
-              color: Color.fromARGB(255, 2, 62, 4),
-              icon: 'assets/icons/park.png',
-              url: '',
-              title: 'Парк Победы');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.630899, 55.926776)),
+            color: Color.fromARGB(255, 2, 62, 4),
+            icon: 'assets/icons/park.png',
+            url: '',
+            title: 'Парк Победы',
+            urlAddress: '',
+            address: '',
+            phone: '',
+          );
 
           final pictureGallery = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.619338, 55.907182)),
-              color: Colors.black,
-              icon: 'assets/icons/museum.png',
-              url: '',
-              title: 'Картинная галерея имени М. В. Нестерова');
-
-          // final citySquare = _buildMarkerWidget(
-          //     pos: transformer
-          //         .fromLatLngToXYCoords(LatLng(53.618756, 55.963194)),
-          //     color: Colors.grey,
-          //     icon: 'assets/icons/square.png',
-          //     url: '',
-          //     title: 'Сквер имени Маршала Жукова');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.619338, 55.907182)),
+            color: Colors.black,
+            icon: 'assets/icons/museum.png',
+            url: '',
+            title: 'Картинная галерея имени М. В. Нестерова',
+            urlAddress: 'https://museum-nesterov.ru',
+            address: 'Коммунистическая ул., 84',
+            phone: '+7 (3473) 22-97-80',
+          );
 
           final russianDramaTheater = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.619647, 55.962643)),
-              color: Color.fromARGB(255, 179, 110, 6),
-              icon: 'assets/icons/theater-masks.png',
-              url: '',
-              title: 'Русский драматический театр');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.619647, 55.962643)),
+            color: Color.fromARGB(255, 179, 110, 6),
+            icon: 'assets/icons/theater-masks.png',
+            url: '',
+            title: 'Русский драматический театр',
+            urlAddress: 'https://www.rusdramteatr.ru',
+            address: 'ул. Худайбердина, 18',
+            phone: '+7(3473) 25-73-01',
+          );
 
           final stateTheater = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.637227, 55.935659)),
-              color: Color.fromARGB(255, 179, 110, 6),
-              icon: 'assets/icons/theater-masks.png',
-              url: '',
-              title:
-                  'Стерлитамакское государственное театрально-концертное объединение');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.637227, 55.935659)),
+            color: Color.fromARGB(255, 179, 110, 6),
+            icon: 'assets/icons/theater-masks.png',
+            url: '',
+            title:
+                'Стерлитамакское государственное театрально-концертное объединение',
+            urlAddress: 'https://sgtko.ru',
+            address: 'просп. Ленина, 30В',
+            phone: '+7 (3473) 20-23-04',
+          );
 
           final museumOfHistoryAndLocalLore = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.617121, 55.964656)),
-              color: Colors.black,
-              icon: 'assets/icons/culture.png',
-              url: '',
-              title: 'Историко-краеведческий музей');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.617121, 55.964656)),
+            color: Colors.black,
+            icon: 'assets/icons/culture.png',
+            url: '',
+            title: 'Историко-краеведческий музей',
+            urlAddress: 'http://museumstr.ru',
+            address: 'ул. Карла Маркса, 100',
+            phone: '+7 (3473) 25-72-10',
+          );
 
           final parkKirova = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.620912, 55.967538)),
-              color: Color.fromARGB(255, 2, 62, 4),
-              icon: 'assets/icons/park.png',
-              url: '',
-              title: 'Парк имени Кирова');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.620912, 55.967538)),
+            color: Color.fromARGB(255, 2, 62, 4),
+            icon: 'assets/icons/park.png',
+            url: '',
+            title: 'Парк имени Кирова',
+            urlAddress: '',
+            address: '',
+            phone: '',
+          );
 
           final parkSodovik = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.642703, 55.972755)),
-              color: Color.fromARGB(255, 2, 62, 4),
-              icon: 'assets/icons/park.png',
-              url: '',
-              title: 'Парк культуры и отдыха Содовик');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.642703, 55.972755)),
+            color: Color.fromARGB(255, 2, 62, 4),
+            icon: 'assets/icons/park.png',
+            url: '',
+            title: 'Парк культуры и отдыха Содовик',
+            urlAddress: '',
+            address: '',
+            phone: '',
+          );
 
           final adminisrtation = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.630325, 55.905990)),
-              color: Colors.black,
-              icon: 'assets/icons/gerb.png',
-              url: '',
-              title:
-                  'Администрация городского округа город Стерлитамак Республики Башкортостан');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.630325, 55.905990)),
+            color: Colors.black,
+            icon: 'assets/icons/gerb.png',
+            url: '',
+            title:
+                'Администрация городского округа город Стерлитамак Республики Башкортостан',
+            urlAddress: 'https://www.sterlitamakadm.ru',
+            address: 'проспект Октября, 32',
+            phone: '+7(3473) 25-23-50',
+          );
 
           final sodaHouseCulture = _buildMarkerWidget(
-              pos: transformer
-                  .fromLatLngToXYCoords(LatLng(53.642708, 55.964948)),
-              color: Colors.black,
-              icon: 'assets/icons/culture.png',
-              url: '',
-              title: 'Сода Дом культуры ');
+            pos: transformer.fromLatLngToXYCoords(LatLng(53.642708, 55.964948)),
+            color: Colors.black,
+            icon: 'assets/icons/culture.png',
+            url: '',
+            title: 'Сода Дом культуры ',
+            urlAddress: 'https://гдк-стерлитамак.рф',
+            address: 'ул. Тукаева, 9',
+            phone: '+7(3473) 28-13-43',
+          );
 
           final centerLocation = Offset(
               transformer.constraints.biggest.width / 2,
@@ -312,7 +358,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                     },
                   ),
                   //homeMarkerWidget,
-                  listObject(),
+
                   parkGagarina,
                   parkZhykov,
                   parkPobedi,
@@ -325,6 +371,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   parkSodovik,
                   adminisrtation,
                   sodaHouseCulture,
+                  listObject(),
 
                   // FlatButton(
                   //   onPressed: () => Navigator.push(context,
