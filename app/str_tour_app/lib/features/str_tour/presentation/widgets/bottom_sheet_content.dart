@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
+//import 'dart:js' as js;
 
 class BottomSheetContent extends StatelessWidget {
   final String title;
@@ -28,6 +29,7 @@ class BottomSheetContent extends StatelessWidget {
           SizedBox(
             height: 70,
             child: Container(
+              width: 300,
               margin: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 10),
               child: Text(
                 '$title',
@@ -49,6 +51,18 @@ class BottomSheetContent extends StatelessWidget {
                   margin: EdgeInsets.only(left: 10, right: 10),
                   child:
                       Text('Сайт: $urlAddress', style: TextStyle(fontSize: 18)))
+              //     Container(
+              // margin: EdgeInsets.only(left: 10, right: 10),
+              // child: Row(
+              //   children: [
+              //     TextButton(
+              //       child: Text('Сайт: $urlAddress',
+              //           style: TextStyle(fontSize: 18)),
+              //       onPressed: (() =>
+              //           js.context.callMethod('open', ['$urlAddress'])),
+              //     )
+              //   ],
+              // ))
               : Center(),
           SizedBox(
             height: 10,
@@ -57,7 +71,7 @@ class BottomSheetContent extends StatelessWidget {
               ? Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
                   child:
-                      Text('Email: $address', style: TextStyle(fontSize: 18)))
+                      Text('Адресс: $address', style: TextStyle(fontSize: 18)))
               : Center(),
           SizedBox(
             height: 10,
@@ -68,8 +82,11 @@ class BottomSheetContent extends StatelessWidget {
                   child: Text('Номер телефона: $phone',
                       style: TextStyle(fontSize: 18)))
               : Center(),
+          SizedBox(
+            height: 10,
+          ),
           Container(
-            margin: EdgeInsets.only(top: 10, left: 50, right: 50, bottom: 10),
+            margin: EdgeInsets.only(top: 0, left: 10, right: 10, bottom: 10),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(color: Colors.black),
@@ -81,7 +98,7 @@ class BottomSheetContent extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                //   js.context.callMethod('open', ['$url']);
+                //js.context.callMethod('open', ['$url']);
                 // setState(() {
 
                 Navigator.push(context,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:latlng/latlng.dart';
 import 'package:map/map.dart';
 import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
+import 'package:str_tour_app/features/str_tour/presentation/widgets/nav_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:str_tour_app/features/str_tour/presentation/widgets/bottom_sheet_content.dart';
 //import 'dart:js' as js;
@@ -141,13 +142,13 @@ class _MyMapWebState extends State<MyMapWeb> {
             // SizedBox(width: 10),
             Image(
               image: AssetImage('assets/icons/str_logo.png'),
-              width: 70,
-              height: 70,
+              width: 50,
+              height: 50,
             ),
             //SizedBox(width: 50),
             Text(
               'Достопримечательности',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 16),
             ),
           ],
         ),
@@ -395,6 +396,7 @@ class _MyMapWebState extends State<MyMapWeb> {
           color: Colors.black,
         ),
       ),
+      drawer: NavDrawer().drawerItemsWidget(context),
     );
   }
 
