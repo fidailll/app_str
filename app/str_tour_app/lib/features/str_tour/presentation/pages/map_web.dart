@@ -111,16 +111,30 @@ class _MyMapWebState extends State<MyMapWeb> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Карта Стерлитамака'),
+        title: Row(
+          children: [
+            SizedBox(width: 10),
+            Image(
+              image: AssetImage('assets/icons/str_logo.png'),
+              width: 70,
+              height: 70,
+            ),
+            SizedBox(width: 50),
+            Text('Достопримечательности'),
+          ],
+        ),
         actions: [
           IconButton(
-            tooltip: 'Toggle Dark Mode',
+            tooltip: 'Режим отображение карты',
             onPressed: () {
               setState(() {
                 _darkMode = !_darkMode;
               });
             },
-            icon: Icon(Icons.wb_sunny),
+            icon: Icon(
+              Icons.wb_sunny,
+              color: Colors.black,
+            ),
           ),
         ],
       ),
@@ -319,9 +333,13 @@ class _MyMapWebState extends State<MyMapWeb> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
         onPressed: _gotoDefault,
-        tooltip: 'My Location',
-        child: Icon(Icons.my_location),
+        tooltip: 'Центрировать по центру',
+        child: Icon(
+          Icons.my_location_outlined,
+          color: Colors.black,
+        ),
       ),
     );
   }
@@ -336,16 +354,38 @@ class _MyMapWebState extends State<MyMapWeb> {
           children: [
             PopupMenuButton(
               shape: Border.all(
-                color: Colors.green,
+                color: Colors.black,
                 width: 1.0,
                 style: BorderStyle.solid,
               ),
+              tooltip: 'достопримечательности',
               // icon: Icon(CupertinoIcons.money_rubl_circle),
-              child: const Text(
-                'Показать достопримечательности',
-                // style: ThemeProject()
-                //.themeGreenBattonTextStyle(context)
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8.0),
+                  ),
+                  border: Border(
+                    top: BorderSide(width: 1.0, color: Colors.black),
+                    left: BorderSide(width: 1.0, color: Colors.black),
+                    right: BorderSide(width: 1.0, color: Colors.black),
+                    bottom: BorderSide(width: 1.0, color: Colors.black),
+                  ),
+                ),
+                child: Container(
+                  margin: const EdgeInsets.only(
+                      left: 10, right: 10, top: 10, bottom: 10),
+                  child: Text(
+                    'Показать достопримечательности',
+                    // style:
+                    //     TextStyle(color: !_darkMode ? Colors.black : Colors.white),
+                    // style: ThemeProject()
+                    //.themeGreenBattonTextStyle(context)
+                  ),
+                ),
               ),
+
               itemBuilder: (context) => [
                 PopupMenuItem(
                   child: const Text(
