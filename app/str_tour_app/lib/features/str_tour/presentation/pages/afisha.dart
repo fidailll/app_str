@@ -62,7 +62,7 @@ class _AfishaState extends State<Afisha> {
         ],
       ),
       body: WebView(
-        initialUrl: 'https://cityopen.ru/afisha',
+        initialUrl: 'https://cityopen.ru/events/',
 //Подержка JavaScript
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {

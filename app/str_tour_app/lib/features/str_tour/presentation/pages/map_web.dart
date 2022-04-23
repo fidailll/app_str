@@ -142,17 +142,17 @@ class _MyMapWebState extends State<MyMapWeb> {
         //  backgroundColor: Colors.transparent,
         title: Row(
           children: [
-            // SizedBox(width: 10),
+            SizedBox(width: 10),
             Image(
               image: AssetImage('assets/icons/str_logo.png'),
-              width: 25,
-              height: 25,
+              width: 50,
+              height: 50,
             ),
-            SizedBox(width: 20),
-            Text(
-              'Достопримечательности',
-              style: TextStyle(fontSize: 16),
-            ),
+            // SizedBox(width: 20),
+            // Text(
+            //   '',
+            //   style: TextStyle(fontSize: 16),
+            // ),
           ],
         ),
         actions: [
@@ -202,7 +202,7 @@ class _MyMapWebState extends State<MyMapWeb> {
             pos: transformer.fromLatLngToXYCoords(LatLng(53.630899, 55.926776)),
             color: Color.fromARGB(255, 2, 62, 4),
             icon: 'assets/icons/park.png',
-            url: '',
+            url: 'http://sonofmqe.beget.tech/park_pobedy',
             title: 'Парк Победы',
             urlAddress: '',
             address: '',
@@ -213,7 +213,7 @@ class _MyMapWebState extends State<MyMapWeb> {
             pos: transformer.fromLatLngToXYCoords(LatLng(53.619338, 55.907182)),
             color: Colors.black,
             icon: 'assets/icons/museum.png',
-            url: '',
+            url: 'http://sonofmqe.beget.tech/gallery',
             title: 'Картинная галерея имени М. В. Нестерова',
             urlAddress: 'https://museum-nesterov.ru',
             address: 'Коммунистическая ул., 84',
@@ -235,7 +235,7 @@ class _MyMapWebState extends State<MyMapWeb> {
             pos: transformer.fromLatLngToXYCoords(LatLng(53.637227, 55.935659)),
             color: Color.fromARGB(255, 179, 110, 6),
             icon: 'assets/icons/theater-masks.png',
-            url: '',
+            url: 'http://sonofmqe.beget.tech/bashdram',
             title:
                 'Стерлитамакское государственное театрально-концертное объединение',
             urlAddress: 'https://sgtko.ru',

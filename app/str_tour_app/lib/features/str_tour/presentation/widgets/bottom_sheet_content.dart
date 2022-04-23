@@ -102,8 +102,11 @@ class BottomSheetContent extends StatelessWidget {
                 //js.context.callMethod('open', ['$url']);
                 // setState(() {
 
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WebViewPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            WebViewPage(url: url, title: title)));
               },
               child: Center(
                 child: Text('Посмотреть виртуалльный тур',

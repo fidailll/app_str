@@ -13,25 +13,34 @@ class NavDrawer {
   //   NavDrawer
 
   Widget drawerItemsWidget(BuildContext context) {
-    final drawerHeader = UserAccountsDrawerHeader(
-      decoration: BoxDecoration(color: Colors.grey),
-      accountName: Text(
-        'Иван',
-      ),
-      accountEmail: Text(
-        '11111@mail.ru',
-      ),
-      currentAccountPicture: const CircleAvatar(
-        child: Icon(Icons.person, color: Colors.grey, size: 50),
-        backgroundColor: Colors.white,
-      ),
-    );
+    // final drawerHeader = UserAccountsDrawerHeader(
+    //   decoration: BoxDecoration(color: Colors.grey),
+    //   accountName: Text(
+    //     '',
+    //   ),
+    //   accountEmail: Text(
+    //     '',
+    //   ),
+    //   currentAccountPicture: const CircleAvatar(
+    //     child: Icon(Icons.person, color: Colors.grey, size: 50),
+    //     backgroundColor: Colors.white,
+    //   ),
+    // );
     final drawerItems = Container(
         width: 200,
         color: Colors.white,
         child: ListView(
           children: [
-            drawerHeader,
+            Container(
+              height: 100,
+              color: Colors.grey,
+              child: Image(
+                image: AssetImage('assets/icons/gerb.png'),
+                width: 40,
+                height: 40,
+              ),
+            ),
+            // drawerHeader,
             // Container(
             //     color: Colors.grey,
             //     height: 100,

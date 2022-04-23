@@ -4,14 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
-  const WebViewPage({Key? key}) : super(key: key);
+  String title;
+  String url;
+  WebViewPage({required this.url, required this.title}) : super();
 
   @override
-  State<WebViewPage> createState() => _WebViewPageState();
+  State<WebViewPage> createState() => _WebViewPageState(url, title);
 }
 
 class _WebViewPageState extends State<WebViewPage> {
+  String url;
+  String title;
+  _WebViewPageState(this.url, this.title);
   late WebViewController _webController;
+
+  // @override
+  // void initState() {
+  //   cacheDelete();
+  //   super.initState();
+  // }
+
+  void cacheDelete() async {
+    await _webController.clearCache();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,16 +35,16 @@ class _WebViewPageState extends State<WebViewPage> {
         title: Row(
           children: [
             // SizedBox(width: 10),
-            // Image(
-            //   image: AssetImage('assets/icons/str_logo.png'),
-            //   width: 40,
-            //   height: 40,
-            // ),
-            //SizedBox(width: 50),
-            Text(
-              'Парк Гагарина',
-              style: TextStyle(fontSize: 20),
+            Image(
+              image: AssetImage('assets/icons/str_logo.png'),
+              width: 50,
+              height: 50,
             ),
+            //SizedBox(width: 50),
+            // Text(
+            //   title,
+            //   style: TextStyle(fontSize: 20),
+            // ),
           ],
         ),
         actions: [
@@ -63,7 +79,13 @@ class _WebViewPageState extends State<WebViewPage> {
         ],
       ),
       body: WebView(
-        initialUrl: 'http://sonofmqe.beget.tech/park_gagarina',
+        // onWebViewCreated:(url) {
+        //   _webController.clearCache();
+        // },
+        // onPageStarted: (url) {
+        //   _webController.clearCache();
+        // },
+        initialUrl: url,
 //Подержка JavaScript
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {
