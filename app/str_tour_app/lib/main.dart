@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:str_tour_app/features/str_tour/presentation/pages/map.dart';
+import 'package:str_tour_app/features/str_tour/presentation/pages/map_web.dart';
 import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
         titleLarge: TextStyle(color: Colors.black),
       )),
-      home: MyMap(), //WebViewPage(),
+      home: MyMapWeb(), //WebViewPage(),
     );
   }
 }
