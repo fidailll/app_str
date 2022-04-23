@@ -16,7 +16,21 @@ class _WebViewPageState extends State<WebViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Стерлитамак'),
+        title: Row(
+          children: [
+            // SizedBox(width: 10),
+            // Image(
+            //   image: AssetImage('assets/icons/str_logo.png'),
+            //   width: 40,
+            //   height: 40,
+            // ),
+            //SizedBox(width: 50),
+            Text(
+              'Парк Гагарина',
+              style: TextStyle(fontSize: 20),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             onPressed: () async {
@@ -27,7 +41,7 @@ class _WebViewPageState extends State<WebViewPage> {
               }
               return;
             },
-            icon: const Icon(Icons.arrow_back_ios),
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           ),
           IconButton(
             onPressed: () async {
@@ -38,18 +52,18 @@ class _WebViewPageState extends State<WebViewPage> {
               }
               return;
             },
-            icon: const Icon(Icons.arrow_forward_ios),
+            icon: const Icon(Icons.arrow_forward_ios, color: Colors.black),
           ),
           IconButton(
             onPressed: () async {
               _webController.reload();
             },
-            icon: const Icon(Icons.replay),
+            icon: const Icon(Icons.replay, color: Colors.black),
           ),
         ],
       ),
       body: WebView(
-        initialUrl: 'http://sonofmqe.beget.tech',
+        initialUrl: 'http://sonofmqe.beget.tech/park_gagarina',
 //Подержка JavaScript
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {

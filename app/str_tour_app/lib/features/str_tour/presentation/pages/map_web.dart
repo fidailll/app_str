@@ -5,7 +5,7 @@ import 'package:latlng/latlng.dart';
 import 'package:map/map.dart';
 import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:js' as js;
+//import 'dart:js' as js;
 
 class MyMapWeb extends StatefulWidget {
   @override
@@ -85,7 +85,11 @@ class _MyMapWebState extends State<MyMapWeb> {
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
               onTap: () {
-                js.context.callMethod('open', ['$url']);
+                //   js.context.callMethod('open', ['$url']);
+                // setState(() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => WebViewPage()));
+                // });
               },
               child: Image(image: AssetImage('$icon'), width: 50, height: 50),
             ),
@@ -113,14 +117,17 @@ class _MyMapWebState extends State<MyMapWeb> {
       appBar: AppBar(
         title: Row(
           children: [
-            SizedBox(width: 10),
+            // SizedBox(width: 10),
             Image(
               image: AssetImage('assets/icons/str_logo.png'),
               width: 70,
               height: 70,
             ),
-            SizedBox(width: 50),
-            Text('Достопримечательности'),
+            //SizedBox(width: 50),
+            Text(
+              'Достопримечательности',
+              style: TextStyle(fontSize: 20),
+            ),
           ],
         ),
         actions: [
