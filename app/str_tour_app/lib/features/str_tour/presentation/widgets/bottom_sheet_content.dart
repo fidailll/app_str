@@ -3,8 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
+// import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
+// ignore: avoid_web_libraries_in_flutter
 //import 'dart:js' as js;
+
+import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
 
 class BottomSheetContent extends StatelessWidget {
   final String title;
@@ -14,12 +17,13 @@ class BottomSheetContent extends StatelessWidget {
   final String url;
 
   const BottomSheetContent(
-      {required this.title,
+      {Key? key,
+      required this.title,
       required this.urlAddress,
       required this.address,
       required this.phone,
       required this.url})
-      : super();
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,11 +34,12 @@ class BottomSheetContent extends StatelessWidget {
             height: 70,
             child: Container(
               width: 300,
-              margin: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 10),
+              margin: const EdgeInsets.only(
+                  top: 20, left: 10, right: 10, bottom: 10),
               child: Text(
-                '$title',
+                title,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
             ),
           ),
@@ -43,14 +48,14 @@ class BottomSheetContent extends StatelessWidget {
           //   height: 350,
           //   child: ListView(
           //     children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           urlAddress != ''
               ? Container(
-                  margin: EdgeInsets.only(left: 10, right: 10),
-                  child:
-                      Text('Сайт: $urlAddress', style: TextStyle(fontSize: 18)))
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  child: Text('Сайт: $urlAddress',
+                      style: const TextStyle(fontSize: 18)))
               //     Container(
               // margin: EdgeInsets.only(left: 10, right: 10),
               // child: Row(
@@ -63,43 +68,44 @@ class BottomSheetContent extends StatelessWidget {
               //     )
               //   ],
               // ))
-              : Center(),
-          SizedBox(
+              : const Center(),
+          const SizedBox(
             height: 10,
           ),
           address != ''
               ? Container(
-                  margin: EdgeInsets.only(left: 10, right: 10),
-                  child:
-                      Text('Адресс: $address', style: TextStyle(fontSize: 18)))
-              : Center(),
-          SizedBox(
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  child: Text('Адресс: $address',
+                      style: const TextStyle(fontSize: 18)))
+              : const Center(),
+          const SizedBox(
             height: 10,
           ),
           phone != ''
               ? Container(
-                  margin: EdgeInsets.only(left: 10, right: 10),
+                  margin: const EdgeInsets.only(left: 10, right: 10),
                   child: Text('Номер телефона: $phone',
-                      style: TextStyle(fontSize: 18)))
-              : Center(),
-          SizedBox(
+                      style: const TextStyle(fontSize: 18)))
+              : const Center(),
+          const SizedBox(
             height: 10,
           ),
           Container(
             height: 50,
-            margin: EdgeInsets.only(top: 0, left: 10, right: 10, bottom: 10),
+            margin:
+                const EdgeInsets.only(top: 0, left: 10, right: 10, bottom: 10),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(color: Colors.black),
                 primary: Colors.white,
                 shadowColor: Colors.black,
-                side: BorderSide(color: Colors.black),
+                side: const BorderSide(color: Colors.black),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
               onPressed: () {
-                //js.context.callMethod('open', ['$url']);
+                // js.context.callMethod('open', [url]);
                 // setState(() {
 
                 Navigator.push(
@@ -108,7 +114,7 @@ class BottomSheetContent extends StatelessWidget {
                         builder: (context) =>
                             WebViewPage(url: url, title: title)));
               },
-              child: Center(
+              child: const Center(
                 child: Text('Посмотреть виртуалльный тур',
                     style: TextStyle(color: Colors.black)),
               ),

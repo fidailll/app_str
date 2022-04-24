@@ -3,11 +3,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:latlng/latlng.dart';
 import 'package:map/map.dart';
-import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:js' as js;
+// import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
+// import 'package:url_launcher/url_launcher.dart';
+// ignore: avoid_web_libraries_in_flutter
+// import 'dart:js' as js;
 
 class MyMap extends StatefulWidget {
+  const MyMap({Key? key}) : super(key: key);
+
   @override
   _MyMapState createState() => _MyMapState();
 }
@@ -86,13 +89,13 @@ class _MyMapState extends State<MyMap> {
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
               onTap: () {
-                js.context.callMethod('open', ['$url']);
+                // js.context.callMethod('open', [url]);
               },
-              child: Image(image: AssetImage('$icon'), width: 50, height: 50),
+              child: Image(image: AssetImage(icon), width: 50, height: 50),
             ),
           ),
-          SizedBox(width: 3),
-          Container(
+          const SizedBox(width: 3),
+          SizedBox(
             width: 100,
             height: 50,
             child: Text(
@@ -126,7 +129,7 @@ class _MyMapState extends State<MyMap> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Карта Стерлитамака'),
+        title: const Text('Карта Стерлитамака'),
         actions: [
           IconButton(
             tooltip: 'Toggle Dark Mode',
@@ -135,15 +138,15 @@ class _MyMapState extends State<MyMap> {
                 _darkMode = !_darkMode;
               });
             },
-            icon: Icon(Icons.wb_sunny),
+            icon: const Icon(Icons.wb_sunny),
           ),
         ],
       ),
       body: MapLayoutBuilder(
         controller: controller,
         builder: (context, transformer) {
-          final markerPositions =
-              markers.map(transformer.fromLatLngToXYCoords).toList();
+          // final markerPositions =
+          //  markers.map(transformer.fromLatLngToXYCoords).toList();
 
           // final markerWidgets = markerPositions.map(
           // (pos) => _buildMarkerWidget(pos, Colors.red),
@@ -158,7 +161,7 @@ class _MyMapState extends State<MyMap> {
           final parkGagarina = _buildMarkerWidget(
               pos: transformer
                   .fromLatLngToXYCoords(LatLng(53.647531, 55.946773)),
-              color: Color.fromARGB(255, 2, 62, 4),
+              color: const Color.fromARGB(255, 2, 62, 4),
               icon: 'assets/icons/park.png',
               url: 'http://sonofmqe.beget.tech/park_gagarina',
               title: 'Парк культуры и отдыха имени Ю.А. Гагарина');
@@ -166,7 +169,7 @@ class _MyMapState extends State<MyMap> {
           final parkZhykov = _buildMarkerWidget(
               pos: transformer
                   .fromLatLngToXYCoords(LatLng(53.628821, 55.921758)),
-              color: Color.fromARGB(255, 2, 62, 4),
+              color: const Color.fromARGB(255, 2, 62, 4),
               icon: 'assets/icons/park.png',
               url: '',
               title: 'Парк имени Жукова Г.К.');
@@ -174,7 +177,7 @@ class _MyMapState extends State<MyMap> {
           final parkPobedi = _buildMarkerWidget(
               pos: transformer
                   .fromLatLngToXYCoords(LatLng(53.630899, 55.926776)),
-              color: Color.fromARGB(255, 2, 62, 4),
+              color: const Color.fromARGB(255, 2, 62, 4),
               icon: 'assets/icons/park.png',
               url: '',
               title: 'Парк Победы');
@@ -198,7 +201,7 @@ class _MyMapState extends State<MyMap> {
           final russianDramaTheater = _buildMarkerWidget(
               pos: transformer
                   .fromLatLngToXYCoords(LatLng(53.619647, 55.962643)),
-              color: Color.fromARGB(255, 179, 110, 6),
+              color: const Color.fromARGB(255, 179, 110, 6),
               icon: 'assets/icons/theater-masks.png',
               url: '',
               title: 'Русский драматический театр');
@@ -206,7 +209,7 @@ class _MyMapState extends State<MyMap> {
           final stateTheater = _buildMarkerWidget(
               pos: transformer
                   .fromLatLngToXYCoords(LatLng(53.637227, 55.935659)),
-              color: Color.fromARGB(255, 179, 110, 6),
+              color: const Color.fromARGB(255, 179, 110, 6),
               icon: 'assets/icons/theater-masks.png',
               url: '',
               title:
@@ -223,7 +226,7 @@ class _MyMapState extends State<MyMap> {
           final parkKirova = _buildMarkerWidget(
               pos: transformer
                   .fromLatLngToXYCoords(LatLng(53.620912, 55.967538)),
-              color: Color.fromARGB(255, 2, 62, 4),
+              color: const Color.fromARGB(255, 2, 62, 4),
               icon: 'assets/icons/park.png',
               url: '',
               title: 'Парк имени Кирова');
@@ -231,7 +234,7 @@ class _MyMapState extends State<MyMap> {
           final parkSodovik = _buildMarkerWidget(
               pos: transformer
                   .fromLatLngToXYCoords(LatLng(53.642703, 55.972755)),
-              color: Color.fromARGB(255, 2, 62, 4),
+              color: const Color.fromARGB(255, 2, 62, 4),
               icon: 'assets/icons/park.png',
               url: '',
               title: 'Парк культуры и отдыха Содовик');
@@ -253,9 +256,9 @@ class _MyMapState extends State<MyMap> {
               url: '',
               title: 'Парк культуры и отдыха Содовик');
 
-          final centerLocation = Offset(
-              transformer.constraints.biggest.width / 2,
-              transformer.constraints.biggest.height / 2);
+          // final centerLocation = Offset(
+          //     transformer.constraints.biggest.width / 2,
+          //     transformer.constraints.biggest.height / 2);
 
           // final centerMarkerWidget =
           //     _buildMarkerWidget(centerLocation, Colors.purple);
@@ -275,8 +278,11 @@ class _MyMapState extends State<MyMap> {
 
               final clicked = transformer.fromLatLngToXYCoords(location);
 
+              // ignore: avoid_print
               print('${location.longitude}, ${location.latitude}');
+              // ignore: avoid_print
               print('${clicked.dx}, ${clicked.dy}');
+              // ignore: avoid_print
               print('${details.localPosition.dx}, ${details.localPosition.dy}');
             },
             child: Listener(
@@ -298,13 +304,13 @@ class _MyMapState extends State<MyMap> {
 
                       //Google Maps
                       final url =
-                          'http://mt0.google.com/vt/lyrs=m&hl=en&x=${x}&y=${y}&z=${z}&s=Ga';
+                          'http://mt0.google.com/vt/lyrs=m&hl=en&x=$x&y=$y&z=$z&s=Ga';
                       //'https://www.google.com/maps/vt/pb=!1m4!1m3!1i$z!2i$x!3i$y!2m3!1e0!2sm!3i420120488';
 
                       // 'https://www.google.com/maps/vt/pb=!1m4!1m3!1i$z!2i$x!3i$y!2m3!1e0!2sm!3i420120488!3m7!2sen!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1e0!23i4111425';
 
                       final darkUrl =
-                          'http://mt0.google.com/vt/lyrs=s&hl=en&x=${x}&y=${y}&z=${z}&s=Ga';
+                          'http://mt0.google.com/vt/lyrs=s&hl=en&x=$x&y=$y&z=$z&s=Ga';
                       //Mapbox Streets
                       // final url =
                       //     'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/$z/$x/$y?access_token=YOUR_MAPBOX_ACCESS_TOKEN';
@@ -346,7 +352,7 @@ class _MyMapState extends State<MyMap> {
       floatingActionButton: FloatingActionButton(
         onPressed: _gotoDefault,
         tooltip: 'My Location',
-        child: Icon(Icons.my_location),
+        child: const Icon(Icons.my_location),
       ),
     );
   }
@@ -366,14 +372,14 @@ class _MyMapState extends State<MyMap> {
                 style: BorderStyle.solid,
               ),
               // icon: Icon(CupertinoIcons.money_rubl_circle),
-              child: Text(
+              child: const Text(
                 'Показать достопримечательности',
                 // style: ThemeProject()
                 //.themeGreenBattonTextStyle(context)
               ),
               itemBuilder: (context) => [
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'За сегодня',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -400,11 +406,11 @@ class _MyMapState extends State<MyMap> {
   }
 }
 
-_launchURL() async {
-  const url = 'http://sonofmqe.beget.tech';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
+// _launchURL() async {
+//   const url = 'http://sonofmqe.beget.tech';
+//   if (await canLaunch(url)) {
+//     await launch(url);
+//   } else {
+//     throw 'Could not launch $url';
+//   }
+// }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:str_tour_app/features/str_tour/data/datasources/post_appeal.dart';
 
 class Appeal extends StatefulWidget {
+  const Appeal({Key? key}) : super(key: key);
+
   @override
   _AppealState createState() => _AppealState();
 }
@@ -40,7 +42,7 @@ class _AppealState extends State<Appeal> {
         elevation: 0,
         //  backgroundColor: Colors.transparent,
         title: Row(
-          children: [
+          children: const [
             // SizedBox(width: 10),
             // Image(
             //   image: AssetImage('assets/icons/str_logo.png'),
@@ -69,45 +71,46 @@ class _AppealState extends State<Appeal> {
         //   ),
       ),
       body: Container(
-        color: Color.fromARGB(255, 227, 225, 225),
+        color: const Color.fromARGB(255, 227, 225, 225),
         child: Column(
           children: [
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             editText(
                 text: 'Имя',
                 key: _formKeyName,
                 controller: _nameController,
                 validate: _validateName),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             editText(
                 text: 'Номер телефона',
                 key: _formKeyPhone,
                 controller: _phoneController,
                 validate: _validatePhoneNumber),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             editText(
-              text: 'Текс обращения',
+              text: 'Текст обращения',
               key: _formKeyMessage,
               controller: _messageController,
               validate: _validateMessage,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             editText(
                 text: 'Почта',
                 key: _formKeyEmail,
                 controller: _emailController,
                 validate: _validateEmail),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Container(
               width: 300,
               height: 50,
-              margin: EdgeInsets.only(top: 0, left: 10, right: 10, bottom: 10),
+              margin: const EdgeInsets.only(
+                  top: 0, left: 10, right: 10, bottom: 10),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(color: Colors.black),
                   primary: Colors.white,
                   shadowColor: Colors.black,
-                  side: BorderSide(color: Colors.black),
+                  side: const BorderSide(color: Colors.black),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
@@ -132,7 +135,7 @@ class _AppealState extends State<Appeal> {
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Ваше обращение отправлено!'),
+                        content: const Text('Ваше обращение отправлено!'),
                         action: SnackBarAction(
                           label: 'Ok',
                           onPressed: () {
@@ -147,7 +150,7 @@ class _AppealState extends State<Appeal> {
                     );
                   }
                 },
-                child: Center(
+                child: const Center(
                   child: Text('Отправить обращение',
                       style: TextStyle(color: Colors.black)),
                 ),
@@ -206,7 +209,7 @@ class _AppealState extends State<Appeal> {
       var validate}) {
     return Center(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(8.0),

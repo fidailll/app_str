@@ -3,13 +3,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:latlng/latlng.dart';
 import 'package:map/map.dart';
-import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
+// import 'package:str_tour_app/features/str_tour/presentation/pages/virtual_tour.dart';
 import 'package:str_tour_app/features/str_tour/presentation/widgets/nav_drawer.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 import 'package:str_tour_app/features/str_tour/presentation/widgets/bottom_sheet_content.dart';
 //import 'dart:js' as js;
 
 class MyMapWeb extends StatefulWidget {
+  const MyMapWeb({Key? key}) : super(key: key);
+
   @override
   _MyMapWebState createState() => _MyMapWebState();
 }
@@ -84,15 +86,17 @@ class _MyMapWebState extends State<MyMapWeb> {
     );
   }
 
-  Widget _buildMarkerWidget(
-      {required Offset pos,
-      required Color color,
-      required String icon,
-      required String url,
-      required String title,
-      required String urlAddress,
-      required String address,
-      required String phone}) {
+  Widget _buildMarkerWidget({
+    required Offset pos,
+    required Color color,
+    required String icon,
+    required String url,
+    required String title,
+    required String urlAddress,
+    required String address,
+    required String phone,
+    //required String urlSitiOpen,
+  }) {
     return Positioned(
       left: pos.dx - 16,
       top: pos.dy - 16,
@@ -113,11 +117,11 @@ class _MyMapWebState extends State<MyMapWeb> {
                 //   MaterialPageRoute(builder: (context) => WebViewPage()));
                 // });
               },
-              child: Image(image: AssetImage('$icon'), width: 50, height: 50),
+              child: Image(image: AssetImage(icon), width: 50, height: 50),
             ),
           ),
-          SizedBox(width: 3),
-          Container(
+          const SizedBox(width: 3),
+          SizedBox(
             width: 100,
             height: 50,
             child: Text(
@@ -141,7 +145,7 @@ class _MyMapWebState extends State<MyMapWeb> {
         elevation: 0,
         //  backgroundColor: Colors.transparent,
         title: Row(
-          children: [
+          children: const [
             SizedBox(width: 10),
             Image(
               image: AssetImage('assets/icons/str_logo.png'),
@@ -150,7 +154,7 @@ class _MyMapWebState extends State<MyMapWeb> {
             ),
             // SizedBox(width: 20),
             // Text(
-            //   '',
+            //   'Достопримечательности',
             //   style: TextStyle(fontSize: 16),
             // ),
           ],
@@ -163,7 +167,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                 _darkMode = !_darkMode;
               });
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.wb_sunny,
               color: Colors.black,
             ),
@@ -173,23 +177,24 @@ class _MyMapWebState extends State<MyMapWeb> {
       body: MapLayoutBuilder(
         controller: controller,
         builder: (context, transformer) {
-          final markerPositions =
-              markers.map(transformer.fromLatLngToXYCoords).toList();
+          // final markerPositions =
+          //     markers.map(transformer.fromLatLngToXYCoords).toList();
 
           final parkGagarina = _buildMarkerWidget(
             pos: transformer.fromLatLngToXYCoords(LatLng(53.647531, 55.946773)),
-            color: Color.fromARGB(255, 2, 62, 4),
+            color: const Color.fromARGB(255, 2, 62, 4),
             icon: 'assets/icons/park.png',
             url: 'http://sonofmqe.beget.tech/park_gagarina',
             title: 'Парк культуры и отдыха имени Ю.А. Гагарина',
             urlAddress: 'https://park-str.ru',
             address: 'ул. Фурманова, 15',
             phone: '+7 (937) 308-88-03',
+            //urlSitiOpen: ''
           );
 
           final parkZhykov = _buildMarkerWidget(
             pos: transformer.fromLatLngToXYCoords(LatLng(53.628821, 55.921758)),
-            color: Color.fromARGB(255, 2, 62, 4),
+            color: const Color.fromARGB(255, 2, 62, 4),
             icon: 'assets/icons/park.png',
             url: '',
             title: 'Парк имени Жукова Г.К.',
@@ -200,7 +205,7 @@ class _MyMapWebState extends State<MyMapWeb> {
 
           final parkPobedi = _buildMarkerWidget(
             pos: transformer.fromLatLngToXYCoords(LatLng(53.630899, 55.926776)),
-            color: Color.fromARGB(255, 2, 62, 4),
+            color: const Color.fromARGB(255, 2, 62, 4),
             icon: 'assets/icons/park.png',
             url: 'http://sonofmqe.beget.tech/park_pobedy',
             title: 'Парк Победы',
@@ -222,7 +227,7 @@ class _MyMapWebState extends State<MyMapWeb> {
 
           final russianDramaTheater = _buildMarkerWidget(
             pos: transformer.fromLatLngToXYCoords(LatLng(53.619647, 55.962643)),
-            color: Color.fromARGB(255, 179, 110, 6),
+            color: const Color.fromARGB(255, 179, 110, 6),
             icon: 'assets/icons/theater-masks.png',
             url: '',
             title: 'Русский драматический театр',
@@ -233,7 +238,7 @@ class _MyMapWebState extends State<MyMapWeb> {
 
           final stateTheater = _buildMarkerWidget(
             pos: transformer.fromLatLngToXYCoords(LatLng(53.637227, 55.935659)),
-            color: Color.fromARGB(255, 179, 110, 6),
+            color: const Color.fromARGB(255, 179, 110, 6),
             icon: 'assets/icons/theater-masks.png',
             url: 'http://sonofmqe.beget.tech/bashdram',
             title:
@@ -256,7 +261,7 @@ class _MyMapWebState extends State<MyMapWeb> {
 
           final parkKirova = _buildMarkerWidget(
             pos: transformer.fromLatLngToXYCoords(LatLng(53.620912, 55.967538)),
-            color: Color.fromARGB(255, 2, 62, 4),
+            color: const Color.fromARGB(255, 2, 62, 4),
             icon: 'assets/icons/park.png',
             url: '',
             title: 'Парк имени Кирова',
@@ -267,7 +272,7 @@ class _MyMapWebState extends State<MyMapWeb> {
 
           final parkSodovik = _buildMarkerWidget(
             pos: transformer.fromLatLngToXYCoords(LatLng(53.642703, 55.972755)),
-            color: Color.fromARGB(255, 2, 62, 4),
+            color: const Color.fromARGB(255, 2, 62, 4),
             icon: 'assets/icons/park.png',
             url: '',
             title: 'Парк культуры и отдыха Содовик',
@@ -299,9 +304,9 @@ class _MyMapWebState extends State<MyMapWeb> {
             phone: '+7(3473) 28-13-43',
           );
 
-          final centerLocation = Offset(
-              transformer.constraints.biggest.width / 2,
-              transformer.constraints.biggest.height / 2);
+          // final centerLocation = Offset(
+          //     transformer.constraints.biggest.width / 2,
+          //     transformer.constraints.biggest.height / 2);
 
           // final centerMarkerWidget =
           //     _buildMarkerWidget(centerLocation, Colors.purple);
@@ -321,8 +326,11 @@ class _MyMapWebState extends State<MyMapWeb> {
 
               final clicked = transformer.fromLatLngToXYCoords(location);
 
+              // ignore: avoid_print
               print('${location.longitude}, ${location.latitude}');
+              // ignore: avoid_print
               print('${clicked.dx}, ${clicked.dy}');
+              // ignore: avoid_print
               print('${details.localPosition.dx}, ${details.localPosition.dy}');
             },
             child: Listener(
@@ -344,13 +352,13 @@ class _MyMapWebState extends State<MyMapWeb> {
 
                       //Google Maps
                       final url =
-                          'http://mt0.google.com/vt/lyrs=m&hl=en&x=${x}&y=${y}&z=${z}&s=Ga';
+                          'http://mt0.google.com/vt/lyrs=m&hl=en&x=$x&y=$y&z=$z&s=Ga';
                       //'https://www.google.com/maps/vt/pb=!1m4!1m3!1i$z!2i$x!3i$y!2m3!1e0!2sm!3i420120488';
 
                       // 'https://www.google.com/maps/vt/pb=!1m4!1m3!1i$z!2i$x!3i$y!2m3!1e0!2sm!3i420120488!3m7!2sen!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1e0!23i4111425';
 
                       final darkUrl =
-                          'http://mt0.google.com/vt/lyrs=s&hl=en&x=${x}&y=${y}&z=${z}&s=Ga';
+                          'http://mt0.google.com/vt/lyrs=s&hl=en&x=$x&y=$y&z=$z&s=Ga';
                       //Mapbox Streets
                       // final url =
                       //     'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/$z/$x/$y?access_token=YOUR_MAPBOX_ACCESS_TOKEN';
@@ -394,7 +402,7 @@ class _MyMapWebState extends State<MyMapWeb> {
         backgroundColor: Colors.white,
         onPressed: _gotoDefault,
         tooltip: 'Центрировать по центру',
-        child: Icon(
+        child: const Icon(
           Icons.my_location_outlined,
           color: Colors.black,
         ),
@@ -417,10 +425,10 @@ class _MyMapWebState extends State<MyMapWeb> {
                 width: 1.0,
                 style: BorderStyle.solid,
               ),
-              tooltip: 'достопримечательности',
+              tooltip: 'Достопримечательности',
               // icon: Icon(CupertinoIcons.money_rubl_circle),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(
                     Radius.circular(8.0),
@@ -435,7 +443,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                 child: Container(
                   margin: const EdgeInsets.only(
                       left: 10, right: 10, top: 10, bottom: 10),
-                  child: Text(
+                  child: const Text(
                     'Показать достопримечательности',
                     // style:
                     //     TextStyle(color: !_darkMode ? Colors.black : Colors.white),
@@ -455,15 +463,16 @@ class _MyMapWebState extends State<MyMapWeb> {
                   value: 1,
                   onTap: () {
                     _gotoObject(53.647531, 55.946773);
-
+                    //  _onScaleUpdate;
                     // setState() {
+
                     //   _onScaleUpdate;
                     // //  _gotoObject(53.647531, 55.946773);
                     // }
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Парк имени Жукова Г.К.',
                     // style: ThemeProject()
                     ////  .themeGreenBattonTextStyle(context)
@@ -485,7 +494,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                 //   },
                 // ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Парк Победы',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -496,7 +505,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Картинная галерея имени М. В. Нестерова',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -507,7 +516,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Русский драматический театр',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -518,7 +527,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Стерлитамакское государственное театрально-концертное объединение',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -529,7 +538,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Историко-краеведческий музей',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -540,7 +549,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Парк имени Кирова',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -551,7 +560,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Парк культуры и отдыха Содовик',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -562,7 +571,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Администрация городского округа город Стерлитамак Республики Башкортостан',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -573,7 +582,7 @@ class _MyMapWebState extends State<MyMapWeb> {
                   },
                 ),
                 PopupMenuItem(
-                  child: Text(
+                  child: const Text(
                     'Сода Дом культуры ',
                     // style: ThemeProject()
                     //  .themeGreenBattonTextStyle(context)
@@ -592,11 +601,11 @@ class _MyMapWebState extends State<MyMapWeb> {
   }
 }
 
-_launchURL() async {
-  const url = 'http://sonofmqe.beget.tech';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
+// _launchURL() async {
+//   const url = 'http://sonofmqe.beget.tech';
+//   if (await canLaunch(url)) {
+//     await launch(url);
+//   } else {
+//     throw 'Could not launch $url';
+//   }
+// }

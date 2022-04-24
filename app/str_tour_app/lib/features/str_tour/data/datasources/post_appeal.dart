@@ -21,26 +21,23 @@ class PostAppeal {
 
 //Кодированиев в Json формат
     var body = json.encode(data);
+    // ignore: avoid_print
     print("$data");
 //Отправка запроса
     try {
-      var response = await http.post(Uri.parse(url),
-          headers: {
-            //'Content-Type': 'application/json',
-            // 'authorization': 'Basic $encodedCredentials',
-            //'authorization': 'Basic ${token[0]}'
-            //'authorization': 'Basic c2VyZ2VpOlgwZnNyMW1rYmVUcQ=='
-          },
-          body: body);
+      var response = await http.post(Uri.parse(url), headers: {}, body: body);
+      // ignore: avoid_print
       print("Receive"); //Получение
+      // ignore: avoid_print
       print("Status: ${response.statusCode}"); //статуc
       //print("Body: ${response.body}"); //вывод запроса в консоль
-      ///=============================Разбиение строки=====================
 
       statusCode = response.statusCode;
     } catch (error) {
       //log(e.toString());
+      // ignore: avoid_print
       print(error);
     }
+    return null;
   }
 }

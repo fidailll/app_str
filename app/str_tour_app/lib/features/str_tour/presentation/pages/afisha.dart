@@ -1,10 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:str_tour_app/features/str_tour/data/datasources/post_appeal.dart';
+//import 'package:str_tour_app/features/str_tour/data/datasources/post_appeal.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Afisha extends StatefulWidget {
+  const Afisha({Key? key}) : super(key: key);
+
   @override
   _AfishaState createState() => _AfishaState();
 }
@@ -16,7 +18,7 @@ class _AfishaState extends State<Afisha> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          children: [
+          children: const [
             // SizedBox(width: 10),
             // Image(
             //   image: AssetImage('assets/icons/str_logo.png'),

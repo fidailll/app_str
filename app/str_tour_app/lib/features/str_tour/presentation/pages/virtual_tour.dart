@@ -3,12 +3,15 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+// ignore: must_be_immutable
 class WebViewPage extends StatefulWidget {
   String title;
   String url;
-  WebViewPage({required this.url, required this.title}) : super();
+  WebViewPage({Key? key, required this.url, required this.title})
+      : super(key: key);
 
   @override
+  // ignore: no_logic_in_create_state
   State<WebViewPage> createState() => _WebViewPageState(url, title);
 }
 
@@ -34,17 +37,17 @@ class _WebViewPageState extends State<WebViewPage> {
       appBar: AppBar(
         title: Row(
           children: [
-            // SizedBox(width: 10),
-            Image(
+            const SizedBox(width: 10),
+            const Image(
               image: AssetImage('assets/icons/str_logo.png'),
               width: 50,
               height: 50,
             ),
-            //SizedBox(width: 50),
-            // Text(
-            //   title,
-            //   style: TextStyle(fontSize: 20),
-            // ),
+            const SizedBox(width: 50),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 20),
+            ),
           ],
         ),
         actions: [

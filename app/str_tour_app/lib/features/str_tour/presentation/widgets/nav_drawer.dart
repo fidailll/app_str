@@ -5,6 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:str_tour_app/features/str_tour/presentation/pages/afisha.dart';
 import 'package:str_tour_app/features/str_tour/presentation/pages/appeal.dart';
+// ignore: avoid_web_libraries_in_flutter
+// import 'dart:js' as js;
 
 // Press the Navigation Drawer button to the left of AppBar to show
 // a simple Drawer with two items.
@@ -34,7 +36,7 @@ class NavDrawer {
             Container(
               height: 100,
               color: Colors.grey,
-              child: Image(
+              child: const Image(
                 image: AssetImage('assets/icons/gerb.png'),
                 width: 40,
                 height: 40,
@@ -54,17 +56,17 @@ class NavDrawer {
             //drawerHeader,
 
             ListTile(
-              title: Text(
+              title: const Text(
                 'Написать обращение',
               ),
               //leading: const Icon(Icons.edit),
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Appeal()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Appeal()));
               },
             ),
             ListTile(
-              title: Text(
+              title: const Text(
                 'Афиша',
               ),
               //leading: const Icon(Icons.),
@@ -72,6 +74,7 @@ class NavDrawer {
                 // Navigator.pop(context);
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Afisha()));
+                //js.context.callMethod('open', ['https://cityopen.ru/events/']);
               },
             ),
           ],
